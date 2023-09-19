@@ -1,5 +1,0 @@
-/home/chelik/Desktop/study/C++/tests/CMakeFiles/test1.dir
-/home/chelik/Desktop/study/C++/tests/CMakeFiles/Tests.dir
-/home/chelik/Desktop/study/C++/tests/CMakeFiles/test.dir
-/home/chelik/Desktop/study/C++/tests/CMakeFiles/edit_cache.dir
-/home/chelik/Desktop/study/C++/tests/CMakeFiles/rebuild_cache.dir

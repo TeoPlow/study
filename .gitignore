@@ -5,3 +5,8 @@ MakeFile
 CMakeCache.txt
 *.cmake
 MarkDown.ipynb
+test*.c
+test*.cpp
+test*
+tests
+main
