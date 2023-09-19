@@ -9,6 +9,30 @@
 #define RESET_COLOR    "\x1b[0m"  
 int create_process();
 
+int foo (char * num) {  // (***) Выводит ответ деления без остатка, ИСПРАВИТЬ!
+    // First number
+    long num1_l = strtol(num, NULL, 10);
+    float answer = (float)num1_l;
+
+    // Another numbers
+    float num2 = 0;
+    int flag = 0;
+    for (int i = 0; i < strlen(num); ++i) {
+        if ((num[i] == ' ') && ((flag == 0) | (num[i] == '\0'))) {    // Missed the first number
+            flag = 1;
+        }
+        else if ((flag == 1) && (num[i] != ' ') && (num[i] != '\0')) {    // 10 5
+            num2 = num2*10 + ((int)num[i] - 48); 
+        }
+        else if ((num[i] == ' ') && (flag == 1)) {
+            answer = (float)answer / (float)num2;
+            num2 = 0;
+        }
+    }
+
+    return answer;
+}
+
 int main() {
     // Pipe 1
     int pipe_fd[2]; 
@@ -33,18 +57,17 @@ int main() {
     if (0 == pid)   // Child
     {
         char child_numbers[128];
-        int child_answer;
+        float child_answer;
         read(pipe_fd[0], &child_numbers, sizeof(child_numbers));
         printf(_R_"Child gets '%s'\n", child_numbers);
 
-        // Function (***) 
-        child_answer = strlen(child_numbers);
+        child_answer = foo(child_numbers); // Решает задачку
 
-        printf(_R_"Child transform '%s' to '%d'\n", child_numbers, child_answer);
+        printf(_R_"Child transform '%s' to '%f'\n", child_numbers, child_answer);
 
         // Send 'child_answer' to the parent
         write(pipe_fd_2[1], &child_answer, sizeof(child_answer));
-        printf(_R_"Child send '%d'\n", child_answer);
+        printf(_R_"Child send '%f'\n", child_answer);
 
         close(pipe_fd[0]);
         close(pipe_fd_2[1]);
@@ -75,9 +98,9 @@ int main() {
         wait(NULL);
 
         // Read 'answer' from the child
-        int answer;
+        float answer;
         read(pipe_fd_2[0], &answer, sizeof(answer));
-        printf(_G_"Parent gets '%d'\n", answer);
+        printf(_G_"Parent gets '%f'\n", answer);
 
         close(pipe_fd[1]);
         close(pipe_fd_2[0]);
