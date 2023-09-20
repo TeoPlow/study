@@ -18,7 +18,7 @@ float foo (char * num) {
         if ((flag == 0) && ((num[i] == ' ') | (num[i] == '\0'))) {    // Missed the first number
             flag = 1;
         }
-        else if ((flag == 1) && (num[i] != ' ') && (num[i] != '\0')) {    // 100 26
+        else if ((flag == 1) && (num[i] != ' ') && (num[i] != '\0')) {
             num2 = num2*10 + ((int)num[i] - 48); 
         }
         else if ((flag == 1) && ((num[i] == ' ') | (num[i] == '\0'))) {
