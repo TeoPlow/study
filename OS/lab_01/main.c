@@ -9,7 +9,8 @@
 #define RESET_COLOR    "\x1b[0m"  
 int create_process();
 
-int foo (char * num) {  // (***) Выводит ответ деления без остатка, ИСПРАВИТЬ!
+// Function for solving a task
+float foo (char * num) {
     // First number
     long num1_l = strtol(num, NULL, 10);
     float answer = (float)num1_l;
@@ -17,15 +18,15 @@ int foo (char * num) {  // (***) Выводит ответ деления без
     // Another numbers
     float num2 = 0;
     int flag = 0;
-    for (int i = 0; i < strlen(num); ++i) {
-        if ((num[i] == ' ') && ((flag == 0) | (num[i] == '\0'))) {    // Missed the first number
+    for (int i = 0; i < strlen(num)+1; ++i) {
+        if ((flag == 0) && ((num[i] == ' ') | (num[i] == '\0'))) {    // Missed the first number
             flag = 1;
         }
-        else if ((flag == 1) && (num[i] != ' ') && (num[i] != '\0')) {    // 10 5
+        else if ((flag == 1) && (num[i] != ' ') && (num[i] != '\0')) {    // 100 26
             num2 = num2*10 + ((int)num[i] - 48); 
         }
-        else if ((num[i] == ' ') && (flag == 1)) {
-            answer = (float)answer / (float)num2;
+        else if ((flag == 1) && ((num[i] == ' ') | (num[i] == '\0'))) {
+            answer = answer / num2;
             num2 = 0;
         }
     }
@@ -61,7 +62,7 @@ int main() {
         read(pipe_fd[0], &child_numbers, sizeof(child_numbers));
         printf(_R_"Child gets '%s'\n", child_numbers);
 
-        child_answer = foo(child_numbers); // Решает задачку
+        child_answer = foo(child_numbers); // Solving a task
 
         printf(_R_"Child transform '%s' to '%f'\n", child_numbers, child_answer);
 
