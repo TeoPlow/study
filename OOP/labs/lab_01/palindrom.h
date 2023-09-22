@@ -2,4 +2,4 @@
 
 #include <string>
 
-int palindrom(std::string );
+bool palindrom(std::string );
