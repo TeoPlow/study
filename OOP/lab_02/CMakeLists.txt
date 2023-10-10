@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(Lab02)
+project(lab_02)
 
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
@@ -13,7 +13,7 @@ add_executable(lab_02 main.cpp four.cpp)
 
 
 enable_testing()
-add_executable(tests02 test.cpp four.cpp)
+add_executable(tests02 testcases.cpp four.cpp)
 target_link_libraries(tests02 ${GTEST_LIBRARIES})
 
 add_test(NAME BASIC COMMAND tests02)
