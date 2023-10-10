@@ -13,7 +13,7 @@ add_executable(lab_02 main.cpp four.cpp)
 
 
 enable_testing()
-add_executable(tests02 testcases.cpp four.cpp)
+add_executable(tests02 Testcases.cpp four.cpp)
 target_link_libraries(tests02 ${GTEST_LIBRARIES})
 
 add_test(NAME BASIC COMMAND tests02)
