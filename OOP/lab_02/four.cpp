@@ -91,94 +91,79 @@ std::string Four::to_string() const noexcept {
     }
     return result;
 }
-// Return a number in decimal notation
-int64_t Four::to_decimal() const noexcept {
-    int64_t result = 0;
+
+// Return a number in 10 notation
+int Four::to_10() noexcept {
+    int res_10 = 0;
     for (int i = 0; i < _size; ++i) {
-        result += to_int(array[i]) * std::pow(4, i);
+        res_10 += to_int(array[i]) * std::pow(4, i);
     }
-    return result;
+    return res_10;
 }
 
-Four Four::operator+(const Four &other) {
-    const unsigned char *a, *b; // a > b
-    size_t size_a, size_b;
-    if (_size< other._size){
-        a = other.array;
-        size_a = other._size;
-        b = array;
-        size_b = _size;
-    }
-    else {
-        b = other.array;
-        a = array;
-        size_a = _size;
-        size_b = other._size;
+// Summ
+std::string Four::operator+(const Four &other) {
+    int res = this -> res_10 + other.res_10;
 
-    }
-    Four result = Four(size_a, '0');
+    std::string result;
+    std::string rev_result;
+    int w = res;
+    char dop;
 
-    int remain = 0;
-    for (int i = 0; i < size_b; ++i) {
-        int val = to_int(a[i]) + to_int(b[i]) + remain;
-        result.array[i] = to_char(val % 4);
-        remain = val / 4;
-    }
-    for (int i = size_b; i < size_a; ++i) {
-        int val = to_int(a[i]) + remain;
-        result.array[i] = to_char(val % 4);
-        remain = val / 4;
-    }
-    if (remain > 0) {
-        result.resize(_size + 1);
-        result.array[result._size - 1] = to_char(remain);
-    }
-
-    return result;
-}
-Four Four::operator-(const Four &other) {
-    Four result = *this;
-
-    if (*this < other) {
-        throw std::underflow_error("Four doesn't support negative values");
-    }
-
-    int remain = 0;
-    for (int i = 0; i < other._size; ++i) {
-        int val = to_int(array[i]) - to_int(other.array[i]) - remain;
-        result.array[i] = to_char((val + 4) % 4);
-        remain = val < 0 ? 1 : 0;
-    }
-    if (_size > other._size)
-        result.array[other._size] = to_char(to_int(array[other._size]) - remain);
-    
-    int cnt_zero = 0;
-    for (int i = result._size - 1; i > 0; --i) {
-        if (result.array[i] == '0') {
-            ++cnt_zero;
+    while (w > 0){
+        if (w % 4 == 10){
+            result.append("3");
         }
-        else {
-            break;
+        if ((w % 4 != 10)){
+            dop = w % 4;
+            result.append(std::to_string(dop));
+        }
+        w /= 4;
+    }
+
+    for (int q = result.length() - 1; q >= 0; q--){
+        rev_result += result[q];
+    }
+
+    return rev_result;
+}
+
+//Differ
+std::string Four::operator-(const Four &other) {
+    std::string result;
+    std::string rev_result;
+
+    if (this -> res_10 < other.res_10){
+        return "negative number";
+    }
+
+    if (this -> res_10 == other.res_10){
+        return "0";
+    }
+
+    if (this -> res_10 > other.res_10){
+        int res = this -> res_10 - other.res_10;
+        int w = res;
+        char dop;
+
+        while (w > 0){
+            if (w % 4 == 10){
+                result.append("3");
+            }
+            if ((w % 4 != 10)){
+                dop = w % 4;
+                result.append(std::to_string(dop));
+            }
+            w /= 4;
+        }
+
+        for (int q = result.length() - 1; q >= 0; q--){
+            rev_result += result[q];
         }
     }
-    result.resize(result._size - cnt_zero);
-
-    return result;
+        return rev_result;
 }
-Four Four::operator=(const Four &other) {
-    resize(other._size);
 
-    for (int i = 0; i < _size; ++i) {
-        array[i] = other.array[i];
-    }
-
-    return *this;
-}
-Four Four::operator=(const std::string &s) {
-    *this = Four(s);
-
-    return *this;
-}
 bool Four::operator<(const Four &other) {
     if (_size < other._size)
         return true;
@@ -224,23 +209,4 @@ bool Four::operator==(const Four &other) {
     }
 
     return true;
-}
-bool Four::operator!=(const Four &other) {
-    return !(*this == other);
-}
-bool Four::operator<=(const Four &other) {
-    return !(*this > other);
-}
-bool Four::operator>=(const Four &other) {
-    return !(*this < other);
-}
-
-std::ostream& operator<<(std::ostream& cout, const Four& num) {
-    return cout << num.to_string();
-}
-std::istream& operator>>(std::istream& cin, Four& num) {
-    std::string val;
-    cin >> val;
-    num = val;
-    return cin;
 }
