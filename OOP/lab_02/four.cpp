@@ -5,7 +5,7 @@
 void Four::resize(size_t size) {
     unsigned char* new_array = new unsigned char[size];
 
-    std::memcpy( new_array, array, size * sizeof(unsigned char));
+    std::memcpy(new_array, array, size * sizeof(unsigned char));
 
     _size = size;
     delete [] array;
@@ -19,7 +19,7 @@ Four::Four() {
 }
 Four::Four(const size_t & n, unsigned char t = '0') {
     if (!(t >= '0' && t <= '3'))
-        throw std::invalid_argument("character isn't a Four digit");
+        throw std::invalid_argument("Сharacter isn't a Four digit");
     array = new unsigned char [n];
     _size = n;
     for (int i = 0; i < _size; ++i) {
@@ -33,7 +33,7 @@ Four::Four(const std::initializer_list<unsigned char> &t) {
     int i = t.size() - 1;
     for (unsigned char elem : t) {
         if (!(elem >= '0' && elem <= '3'))
-            throw std::invalid_argument("character isn't a Four digit");
+            throw std::invalid_argument("Сharacter isn't a Four digit");
         array[i--] = elem;
     }
 }
@@ -44,7 +44,7 @@ Four::Four(const std::string &t) {
     int i = t.size() - 1;
     for (unsigned char elem : t) {
         if (!(elem >= '0' && elem <= '3'))
-            throw std::invalid_argument("character isn't a Four digit");
+            throw std::invalid_argument("Сharacter isn't a Four digit");
         array[i--] = elem;
     }
 }
@@ -93,7 +93,7 @@ std::string Four::to_string() const noexcept {
 }
 
 // Return a number in 10 notation
-int Four::to_10() noexcept {
+int Four::to_10() const noexcept {
     int res_10 = 0;
     for (int i = 0; i < _size; ++i) {
         res_10 += to_int(array[i]) * std::pow(4, i);
@@ -102,8 +102,8 @@ int Four::to_10() noexcept {
 }
 
 // Summ
-std::string Four::operator+(const Four &other) {
-    int res = this -> res_10 + other.res_10;
+Four Four::operator+(const Four &other) {
+    int res = this->to_10() + other.to_10();
 
     std::string result;
     std::string rev_result;
@@ -125,24 +125,21 @@ std::string Four::operator+(const Four &other) {
         rev_result += result[q];
     }
 
-    return rev_result;
+
+    return Four(rev_result);
 }
 
 //Differ
-std::string Four::operator-(const Four &other) {
+Four Four::operator-(const Four &other) {
     std::string result;
     std::string rev_result;
 
-    if (this -> res_10 < other.res_10){
-        return "negative number";
+    if (this->to_10() < other.to_10()){
+        throw std::invalid_argument("Nigative number");
     }
 
-    if (this -> res_10 == other.res_10){
-        return "0";
-    }
-
-    if (this -> res_10 > other.res_10){
-        int res = this -> res_10 - other.res_10;
+    if (this->to_10() > other.to_10()){
+        int res = this -> to_10() - other.to_10();
         int w = res;
         char dop;
 
@@ -161,9 +158,13 @@ std::string Four::operator-(const Four &other) {
             rev_result += result[q];
         }
     }
-        return rev_result;
+    if (rev_result.size() == 0) {
+        return Four();
+    }
+    return Four(rev_result);
 }
 
+// Smaller
 bool Four::operator<(const Four &other) {
     if (_size < other._size)
         return true;
@@ -181,6 +182,8 @@ bool Four::operator<(const Four &other) {
 
     return false;
 }
+
+// Bigger
 bool Four::operator>(const Four &other) {
     if (_size > other._size)
         return true;
@@ -198,6 +201,8 @@ bool Four::operator>(const Four &other) {
 
     return false;
 }
+
+// Ravno
 bool Four::operator==(const Four &other) {
     if (_size != other._size)
         return false;
@@ -209,4 +214,13 @@ bool Four::operator==(const Four &other) {
     }
 
     return true;
+}
+
+// Copy
+Four& Four::operator=(const Four &other) {
+    Four result;
+    for (size_t i = 0; i < _size; i++)
+        this->array[i] = other.array[i];
+    _size = other.size();
+    return *this;
 }

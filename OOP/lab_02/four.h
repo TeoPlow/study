@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include <string>
 #include <iostream>
 
@@ -21,12 +20,13 @@ public:
 
     size_t size() const noexcept;
     std::string to_string() const noexcept;
-    int to_10() noexcept;
+    int to_10() const noexcept;
 
-    std::string operator+(const Four &);
-    std::string operator-(const Four &);
+    Four operator+(const Four &);
+    Four operator-(const Four &);
     bool operator<(const Four &);
     bool operator>(const Four &);
     bool operator==(const Four &);
-
+    Four& operator=(const Four &);
+    
 };
