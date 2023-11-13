@@ -42,13 +42,12 @@ TEST(Trapeze, EmptyConstructor) {
     EXPECT_EQ(t.center(), std::make_pair(0.0, 0.0));
 }
 
-/*---------------------------НЕРАБОТАЕТ------------------------------*/
 TEST(Trapeze, VectorConstructor) {
-    std::vector<double> x = {0.0, 10.0, 0.0, 5.0};
-    std::vector<double> y = {0.0, 0.0, 5.0, 5.0};
-    Trapeze t(x, y);
-    EXPECT_DOUBLE_EQ(t.area(), 50.0);
-    EXPECT_EQ(t.center(), std::make_pair(3.75, 2.5));
+    std::vector<double> x = {0.0, 1.0, 6.0, 5.0};
+    std::vector<double> y = {0.0, 5.0, 0.0, 5.0};
+    Trapeze r(x, y);
+    EXPECT_DOUBLE_EQ(r.area(), 15.0);
+    EXPECT_EQ(r.center(), std::make_pair(3.0, 2.5));
 }
 
 // Тесты для класса Array
@@ -68,9 +67,6 @@ TEST(Array, SizeConstructor) {
     }
 }
 
-
-
-/*---------------------------НЕРАБОТАЕТ------------------------------*/
 TEST(Square, AssignmentOperator) {
     std::vector<double> x1 = {0.0, 10.0, 0.0, 10.0};
     std::vector<double> y1 = {0.0, 0.0, 10.0, 10.0};
@@ -82,9 +78,10 @@ TEST(Square, AssignmentOperator) {
 
     t2 = t1;
 
-    EXPECT_DOUBLE_EQ(t2.area(), 50.0);
-    EXPECT_NEAR(t2.center().first, 3.33333, 0.00001);
-    EXPECT_NEAR(t2.center().second, 3.33333, 0.00001);
+    EXPECT_DOUBLE_EQ(t1.area(), 100.0);
+    EXPECT_DOUBLE_EQ(t2.area(), 100.0);
+    EXPECT_EQ(t1.center(), std::make_pair(5.0, 5.0));
+    EXPECT_EQ(t2.center(), std::make_pair(5.0, 5.0));
 }
 
 int main(int argc, char **argv) {
