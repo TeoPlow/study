@@ -1,4 +1,3 @@
-#include <exception>
 #include <cmath>
 
 #include "square.h"
