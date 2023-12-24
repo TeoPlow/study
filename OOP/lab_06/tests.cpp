@@ -1,149 +1,60 @@
-#include "googletest/googletest/include/gtest/gtest.h"
-#include "../include/file.h"
-#include "../include/fight.h"
-#include "../include/factory.h"
+#include <gtest/gtest.h>
 
-TEST(test_01, basic_test_set)
-{
-    set_t array;
+#include <sstream>
+#include <vector>
+#include <memory>
+#include "squirrel.hpp"
+#include "pegas.hpp"
+#include "knight.hpp"
+#include "factory.hpp"
 
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(1), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(2), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(3), 5, 6, "Momtya"));
-    
-    bool result = false;
-
-    result = (array.size() == 3);
-
-    EXPECT_TRUE(result);
+TEST(Constructors, Squirrel) {
+    Squirrel s(0, 0, "Karatist");
+    std::stringstream out;
+    s.print(out);
+    ASSERT_EQ(out.str(), "Squirrel Karatist {0, 0}");
 }
 
-TEST(test_02, basic_test_set)
-{
-    set_t array;
-    set_t dead;
-
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(1), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(2), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(3), 5, 6, "Momtya"));
-    
-    dead = fight(array, 10);
-
-    bool result = false;
-
-    result = (dead.size() == 2);
-
-    EXPECT_TRUE(result);
+TEST(Constructors, Pegas) {
+    Pegas t(1, 1, "Zhenya");
+    std::stringstream out;
+    t.print(out);
+    ASSERT_EQ(out.str(), "Pegas Zhenya {1, 1}");
 }
 
-TEST(test_03, basic_test_set)
-{
-    set_t array;
-    set_t dead;
-
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(1), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(2), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(3), 5, 6, "Momtya"));
-    
-    dead = fight(array, 1);
-
-    bool result = false;
-
-    result = (dead.size() == 0);
-
-    EXPECT_TRUE(result);
+TEST(Constructors, Knight) {
+    Knight e(2, 2, "Vorchun");
+    std::stringstream out;
+    e.print(out);
+    ASSERT_EQ(out.str(), "Knight Vorchun {2, 2}");
 }
 
-TEST(test_04, basic_test_set)
-{
-    set_t array;
-    set_t dead;
+TEST(Fabric, basic) {
+    std::vector<std::shared_ptr<NPC>> persons;
+    persons.push_back(factory("Squirrel", "Name", 0, 0));
+    persons.push_back(factory("Pegas", "Name", 0, 0));
+    persons.push_back(factory("Knight", "Name", 0, 0));
 
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(3), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(3), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(3), 5, 6, "Momtya"));
-    
-    dead = fight(array, 10);
-
-    bool result = false;
-
-    result = (dead.size() == 0);
-
-    EXPECT_TRUE(result);
+    std::stringstream out;
+    for (auto& elem : persons) {
+        elem->print(out);
+    }
+    ASSERT_EQ(out.str(), "Squirrel Name {0, 0}Pegas Name {0, 0}Knight Name {0, 0}");
 }
 
-TEST(test_05, basic_test_set)
-{
-    set_t dead;
-    set_t array;
+TEST(Fighting, basic) {
+    std::vector<std::shared_ptr<NPC>> persons;
+    persons.push_back(factory("Squirrel", "Name", 0, 0));
+    persons.push_back(factory("Pegas", "Name", 0, 0));
+    persons.push_back(factory("Knight", "Name", 0, 0));
 
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(1), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(1), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(1), 5, 6, "Momtya"));
-    
-    dead = fight(array, 10);
-
-    bool result = false;
-
-    result = (dead.size() == 0);
-
-    EXPECT_TRUE(result);
+    for (auto& defender : persons) {
+        for (auto& attacker : persons) {
+            defender->accept(attacker.get(), 0);
+        }
+    }
 }
 
-TEST(test_06, basic_test_set)
-{
-    set_t array;
-    set_t dead;
-
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(1), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(3), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(3), 5, 6, "Momtya"));
-    
-    dead = fight(array, 10);
-
-    bool result = false;
-
-    result = (dead.size() == 0);
-
-    EXPECT_TRUE(result);
-}
-
-TEST(test_07, basic_test_set)
-{
-    set_t array;
-    set_t dead;
-
-    Factory factor;
-
-    array.insert(factor.factory(NpcType(1), 1, 2, "Ara"));
-    array.insert(factor.factory(NpcType(2), 3, 4, "Motya"));
-    array.insert(factor.factory(NpcType(2), 5, 6, "Momtya"));
-    
-    dead = fight(array, 10);
-
-    bool result = false;
-
-    result = (dead.size() == 2);
-
-    EXPECT_TRUE(result);
-}
-
-int main(int argc, char** argv)
-{
-
-    ::testing::InitGoogleTest(&argc, argv);
-
-    return RUN_ALL_TESTS();
+int main(int argc, char** argv) {
+    testing::InitGoogleTest(&argc, argv);
 }

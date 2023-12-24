@@ -1,26 +1,28 @@
-#include "../include/knight.h"
+#include "knight.hpp"
+#include "pegas.hpp"
+#include "squirrel.hpp"
+#include <algorithm>
 
-Knight::Knight(int x, int y, std::string name) : NPC(Knight_Type, x, y, name) {}
-Knight::Knight(std::istream &is) : NPC(Knight_Type, is) {}
-
-void Knight::print()
-{
-    std::cout << *this;
+Knight::Knight(const int& _x, const int& _y, const std::string& _name) {
+    x = _x;
+    y = _y;
+    name = _name;
+    alive = true;
 }
 
-void Knight::save(std::ostream &os)
-{
-    os << Knight_Type << std::endl;
-    NPC::save(os);
+void Knight::print(std::ostream& out) {
+    out << *this;
 }
 
-std::ostream &operator<<(std::ostream &os, Knight &knight)
-{
-    os << "knight: " << *static_cast<NPC*>(&knight) << std::endl;
-    return os;
+void Knight::accept(NPC* attacker, const int& distance) {
+    if (alive && dynamic_cast<Squirrel*>(attacker)) {
+        bool win = is_close(*attacker, distance);
+        if (win) 
+            alive = false;
+        notify(attacker, win);
+    }
 }
 
-int Knight::accept(Visitor& visitor)
-{
-    return visitor.visit(*this);
+std::ostream& operator<<(std::ostream& out, const Knight& other) {
+    return out << "Knight " << other.name << " {" << other.x << ", " << other.y << '}';
 }

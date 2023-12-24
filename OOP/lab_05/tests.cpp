@@ -1,4 +1,4 @@
-#include "googletest/googletest/include/gtest/gtest.h"
+#include <gtest/gtest.h>
 #include <iostream>
 #include "List.h"
 #include "Allocator.h"

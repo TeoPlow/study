@@ -65,7 +65,7 @@ class List
                 {
                     return next -> erase(*this, --index);
                 }
-                
+
                 throw std::logic_error("Out of range");
             }
 

@@ -1,26 +1,23 @@
-#include "../include/pegas.h"
+#include "knight.hpp"
+#include "pegas.hpp"
+#include "squirrel.hpp"
+#include <algorithm>
 
-Pegas::Pegas(int x, int y, std::string name) : NPC(Pegas_Type, x, y, name) {}
-Pegas::Pegas(std::istream &is) : NPC(Pegas_Type, is) {}
-
-void Pegas::print()
-{
-    std::cout << *this;
+Pegas::Pegas(const int& _x, const int& _y, const std::string& _name) {
+    x = _x;
+    y = _y;
+    name = _name;
+    alive = true;
 }
 
-void Pegas::save(std::ostream &os)
-{
-    os << Pegas_Type << std::endl;
-    NPC::save(os);
+void Pegas::print(std::ostream& out) {
+    out << *this;
 }
 
-std::ostream &operator<< (std::ostream &os, Pegas &pegas)
-{
-    os << "pegas: " << *static_cast<NPC*>(&pegas) << std::endl;
-    return os;
+void Pegas::accept(NPC* attacker, const int& distance) {
+    
 }
 
-int Pegas::accept(Visitor& visitor)
-{
-    return visitor.visit(*this);
+std::ostream& operator<<(std::ostream& out, const Pegas& other) {
+    return out << "Pegas " << other.name << " {" << other.x << ", " << other.y << '}';
 }

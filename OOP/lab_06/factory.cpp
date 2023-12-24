@@ -1,77 +1,42 @@
-#include "../include/factory.h"
-#include "../include/Observer.h"
+#include "factory.hpp"
+#include "squirrel.hpp"
+#include "pegas.hpp"
+#include "knight.hpp"
 
-
-
-std::shared_ptr<NPC> Factory::factory(std::istream &is)
-{
-    std::shared_ptr<NPC> result;
-    
-    int type{0};
-
-    if (is >> type)
-    {
-        switch (type)
-        {
-            case Knight_Type:
-                result = std::make_shared<Knight>(is);
-                break;
-            
-            case Belka_Type:
-                result = std::make_shared<Belka>(is);
-                break;
-            
-            case Pegas_Type:
-                result = std::make_shared<Pegas>(is);
-                break;
-            
-            default:
-                std::cout << "Kring" << std::endl;
-                break;
-        }
+std::shared_ptr<NPC> factory(std::istream& in) {
+    std::string type, name;
+    int x, y;
+    char c;
+    in >> type >> name >> c >> x >> c >> y >> c;
+    std::shared_ptr<NPC> res;
+    if (type == "Squirrel") {
+        res = std::make_shared<Squirrel>(x, y, name);
     }
-
-    else
-    {
-        std::cerr << "unexpected NPC type:" << type << std::endl;
+    else if (type == "Pegas") {
+        res = std::make_shared<Pegas>(x, y, name);
     }
-
-    if (result)
-    {
-        result -> subscribe(TextObserver::get());
-        result -> subscribe(FileObserver::get());
+    else if (type == "Knight") {
+        res = std::make_shared<Knight>(x, y, name);
     }
-
-    return result;
+    else if (type != "") {
+        std::cerr << "Unknown type" << std::endl;
+    }
+    return res;
 }
 
-std::shared_ptr<NPC> Factory::factory(NpcType type, int x, int y, std::string name)
-{
-    std::shared_ptr<NPC> result;
-
-    switch (type)
-    {
-        case Knight_Type:
-            result = std::make_shared<Knight>(x, y, name);
-            break;
-        
-        case Belka_Type:
-            result = std::make_shared<Belka>(x, y, name);
-            break;
-        
-        case Pegas_Type:
-            result = std::make_shared<Pegas>(x, y, name);
-            break;
-        
-        default:
-            break;
+std::shared_ptr<NPC> factory(const std::string& type, const std::string& name, const int& x, const int& y) {
+    std::shared_ptr<NPC> res;
+    if (type == "Squirrel") {
+        res = std::make_shared<Squirrel>(x, y, name);
     }
-
-    if (result)
-    {
-        result -> subscribe(TextObserver::get());
-        result -> subscribe(FileObserver::get());
+    else if (type == "Pegas") {
+        res = std::make_shared<Pegas>(x, y, name);
     }
-
-    return result;
+    else if (type == "Knight") {
+        res = std::make_shared<Knight>(x, y, name);
+    }
+    else {
+        std::cerr << "Unknown type" << std::endl;
+    }
+    return res;
 }

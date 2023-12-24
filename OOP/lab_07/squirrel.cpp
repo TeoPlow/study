@@ -3,21 +3,21 @@
 #include "squirrel.hpp"
 #include <algorithm>
 
-Knight::Knight(const int& _x, const int& _y) {
+Squirrel::Squirrel(const int& _x, const int& _y) {
     x = _x;
     y = _y;
     alive = true;
 }
 
-void Knight::print(std::ostream& out) {
+void Squirrel::print(std::ostream& out) {
     out << *this;
 }
 
-void Knight::accept(NPC* attacker) {
+void Squirrel::accept(NPC* attacker) {
     alive = !attacker->attack(*this);
 }
 
-bool Knight::attack(Squirrel& defender) {
+bool Squirrel::attack(Knight& defender) {
     bool win = false;
     if (this->is_alive() && defender.is_alive()) {
         if (is_close(defender)) {
@@ -30,22 +30,22 @@ bool Knight::attack(Squirrel& defender) {
     return win;
 }
 
-std::ostream& operator<<(std::ostream& out, const Knight& other) {
-    return out << "Knight " << " {" << other.x << ", " << other.y << '}';
+std::ostream& operator<<(std::ostream& out, const Squirrel& other) {
+    return out << "Squirrel " << " {" << other.x << ", " << other.y << '}';
 }
 
-bool Knight::is_close(const NPC& other) const noexcept {
+bool Squirrel::is_close(const NPC& other) const noexcept {
     auto [_x, _y] = other.get_coordinates();
     return (x - _x) * (x - _x)
         + (y - _y) * (y - _y) 
-        <= 10 * 10;
+        <= 5 * 5;
 }
 
-char Knight::token() const noexcept { return alive ? 'K' : '@'; }
+char Squirrel::token() const noexcept { return alive ? 'S' : '@'; }
 
-void Knight::rand_move(const int& max_x, const int& max_y) {
-    int step_x = std::rand() % 40 - 30;
-    int step_y = std::rand() % 40 - 30;
+void Squirrel::rand_move(const int& max_x, const int& max_y) {
+    int step_x = std::rand() % 10 - 5;
+    int step_y = std::rand() % 10 - 5;
 
     x = std::abs(x + step_x) % max_x;
     y = std::abs(y + step_y) % max_y;

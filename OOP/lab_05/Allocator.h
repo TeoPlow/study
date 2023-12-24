@@ -79,7 +79,7 @@ namespace mai
                 p -> ~T();
             }
     }; 
-    
+
     template <class T, class U>
     constexpr bool operator==(const Allocator<T> &lhs, const Allocator<U> &rhs) 
     {
