@@ -25,8 +25,8 @@ VmodSignTrap = sp.diff(s, t)
 VX_trap = VmodSignTrap * sp.cos(alpha)
 VY_trap = sp.sin(alpha) * VmodSignTrap
 
-xA = X_trap - r * sp.sin(teta)
-yA = Y_trap + r * sp.cos(teta)
+xA = X_trap + r * sp.sin(teta)
+yA = Y_trap - r * sp.cos(teta)
 
 omega = sp.diff(teta, t)
 
@@ -72,17 +72,17 @@ Point = ax1.plot(XA[0], YA[0], marker='o', markersize=10, color='green')[0]
 circle_1 = ax1.plot(X_trap[0] + R1 * np.cos(varphi), Y_trap + R1 * np.sin(varphi), 'black')[0]
 circle_2 = ax1.plot(X_trap[0] + R2 * np.cos(varphi), Y_trap + R2 * np.sin(varphi), 'black')[0]
 
-ax2 = fig.add_subplot(3, 2, 2)
-ax2.plot(T, VX_trap)
-ax2.set_ylabel('VX Trapeze')
+# ax2 = fig.add_subplot(3, 2, 2)
+# ax2.plot(T, VX_trap)
+# ax2.set_ylabel('VX Trapeze')
 
-ax3 = fig.add_subplot(3, 2, 4)
-ax3.plot(T, VXA)
-ax3.set_ylabel('VX Point')
+# ax3 = fig.add_subplot(3, 2, 4)
+# ax3.plot(T, VXA)
+# ax3.set_ylabel('VX Point')
 
-ax4 = fig.add_subplot(3, 2, 6)
-ax4.plot(T, VYA)
-ax4.set_ylabel('VY Point')
+# ax4 = fig.add_subplot(3, 2, 6)
+# ax4.plot(T, VYA)
+# ax4.set_ylabel('VY Point')
 
 plt.subplots_adjust(wspace=0.3, hspace=0.7)
 

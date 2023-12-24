@@ -51,6 +51,12 @@ vy = sp.diff(y, t)
 wx = sp.diff(vx, t)
 wy = sp.diff(vy, t)
 
+nvy = vy / (vx**2 + vy**2)**0.5
+nwx = wx / (wx**2 + wy**2)**0.5
+nwy = wy / (wx**2 + wy**2)**0.5
+nvx = vx / (vx**2 + vy**2)**0.5
+
+
 T = np.linspace(0, 10, 1000)
 
 X, Y = np.zeros_like(T), np.zeros_like(T)
@@ -63,10 +69,10 @@ R0 = ArrowedVector([0, 0], [0, 0])
 for i, time in enumerate(T):
     X[i] = sp.Subs(x, t, time)
     Y[i] = sp.Subs(y, t, time)
-    Wx[i] = sp.Subs(wx, t, time)
-    Wy[i] = sp.Subs(wy, t, time)
-    Vx[i] = sp.Subs(vx, t, time)
-    Vy[i] = sp.Subs(vy, t, time)
+    Wx[i] = sp.Subs(nwx, t, time)
+    Wy[i] = sp.Subs(nwy, t, time)
+    Vx[i] = sp.Subs(nvx, t, time)
+    Vy[i] = sp.Subs(nvy, t, time)
 
 fig, ax1 = plt.subplots(1, 1)
 ax1.axis('equal')
