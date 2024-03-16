@@ -86,7 +86,7 @@ void print(int array[], int length) {
 }
 
 int main() {
-    int array[] = {234, 123, 789, 201, 107};
+    int array[] = {12, 234, 1, 782, 13};
     int length = sizeof(array) / sizeof(array[0]);
 
     razr_sort(array, length);
