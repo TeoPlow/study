@@ -1,0 +1,8 @@
+main.exe
+build
+.vscode
+otchet.aux
+otchet.fdb_latexmk
+otchet.fls
+otchet.log
+otchet.synctex.gz
