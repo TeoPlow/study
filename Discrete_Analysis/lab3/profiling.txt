@@ -1,0 +1,441 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 22.25      0.02     0.02   200220    99.99   125.00  Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&)
+ 22.25      0.04     0.02   200114   100.05   175.08  Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&)
+ 22.25      0.06     0.02   199665   100.27   100.27  Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&)
+ 11.12      0.07     0.01  5167452     1.94     1.94  __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+ 11.12      0.08     0.01   200220    50.00   174.99  AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+ 11.12      0.09     0.01   104557    95.74    95.74  Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.09     0.00  3600634     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::base() const
+  0.00      0.09     0.00  1803208     0.00     0.00  std::char_traits<char>::compare(char const*, char const*, unsigned long)
+  0.00      0.09     0.00  1800317     0.00     0.00  bool __gnu_cxx::operator!=<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&, __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&)
+  0.00      0.09     0.00  1200317     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator++()
+  0.00      0.09     0.00  1200317     0.00     0.00  __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator*() const
+  0.00      0.09     0.00   600000     0.00     0.00  tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+  0.00      0.09     0.00   449710     0.00     0.00  std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair()
+  0.00      0.09     0.00   425353     0.00     0.00  bool __gnu_cxx::__is_null_pointer<char>(char*)
+  0.00      0.09     0.00   425353     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
+  0.00      0.09     0.00   425353     0.00     0.00  std::iterator_traits<char*>::difference_type std::__distance<char*>(char*, char*, std::random_access_iterator_tag)
+  0.00      0.09     0.00   425353     0.00     0.00  std::iterator_traits<char*>::iterator_category std::__iterator_category<char*>(char* const&)
+  0.00      0.09     0.00   425353     0.00     0.00  std::iterator_traits<char*>::difference_type std::distance<char*>(char*, char*)
+  0.00      0.09     0.00   400230     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&)
+  0.00      0.09     0.00   400230     0.00     0.00  unsigned long long& std::forward<unsigned long long&>(std::remove_reference<unsigned long long&>::type&)
+  0.00      0.09     0.00   224837     0.00     0.00  std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&)
+  0.00      0.09     0.00   224837     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type&)
+  0.00      0.09     0.00   224837     0.00     0.00  unsigned long long&& std::forward<unsigned long long>(std::remove_reference<unsigned long long>::type&)
+  0.00      0.09     0.00   200115     0.00   175.08  AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&)
+  0.00      0.09     0.00   200115     0.00     0.00  std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&)
+  0.00      0.09     0.00   200115     0.00     0.00  std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&)
+  0.00      0.09     0.00   199665     0.00   100.27  AVL_tree::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.09     0.00   129280     0.00     0.00  std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&)
+  0.00      0.09     0.00   129280     0.00     0.00  std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&)
+  0.00      0.09     0.00   104558     0.00     0.00  Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*)
+  0.00      0.09     0.00   104558     0.00     0.00  std::remove_reference<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>::type&& std::move<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&)
+  0.00      0.09     0.00    95958     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...)
+  0.00      0.09     0.00    95958     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*)
+  0.00      0.09     0.00    95958     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct_aux<char*>(char*, char*, std::__false_type)
+  0.00      0.09     0.00    95958     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*, void>(char*, char*, std::allocator<char> const&)
+  0.00      0.09     0.00    95958     0.00     0.00  std::__cxx11::to_string(unsigned long long)
+  0.00      0.09     0.00    95958     0.00     0.00  std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&& std::move<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+  0.00      0.09     0.00    95958     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)
+  0.00      0.09     0.00    95592     0.00     0.00  Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.09     0.00    95592     0.00     0.00  Node::~Node()
+  0.00      0.09     0.00    33095     0.00     0.00  Node::rotate_left(AVL_tree*)
+  0.00      0.09     0.00    31083     0.00     0.00  Node::rotate_right(AVL_tree*)
+  0.00      0.09     0.00    24722     0.00     0.00  Node::remove_min[abi:cxx11](AVL_tree*)
+  0.00      0.09     0.00        2     0.00     0.00  AVL_tree::set_root(Node*)
+  0.00      0.09     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4Node6insertEP8AVL_treeRKSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEyERb
+  0.00      0.09     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int)
+  0.00      0.09     0.00        1     0.00     0.00  std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long, true>()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 11.10% of 0.09 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    0.09                 main [1]
+                0.01    0.03  200220/200220      AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [2]
+                0.00    0.04  200115/200115      AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [3]
+                0.00    0.02  199665/199665      AVL_tree::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [7]
+                0.00    0.00  600000/600000      tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [21]
+                0.00    0.00  200116/449710      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+                0.00    0.00  200115/200115      std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [34]
+                0.00    0.00  200115/224837      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [30]
+                0.00    0.00       1/1           std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long, true>() [54]
+-----------------------------------------------
+                0.01    0.03  200220/200220      main [1]
+[2]     38.9    0.01    0.03  200220         AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [2]
+                0.02    0.01  200220/200220      Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [5]
+                0.00    0.00   95958/95958       std::__cxx11::to_string(unsigned long long) [43]
+                0.00    0.00   95958/95958       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [45]
+-----------------------------------------------
+                0.00    0.04  200115/200115      main [1]
+[3]     38.9    0.00    0.04  200115         AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [3]
+                0.02    0.02  200114/200114      Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+                0.00    0.00       1/129280      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&) [35]
+                0.00    0.00       1/104558      Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*) [37]
+                0.00    0.00       1/449710      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+-----------------------------------------------
+                             2383126             Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+                0.02    0.02  200114/200114      AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [3]
+[4]     38.9    0.02    0.02  200114+2383126 Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+                0.01    0.00  104557/104557      Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.01    0.00 2583240/5167452     __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [8]
+                0.00    0.00  104557/129280      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&) [35]
+                0.00    0.00  104557/104558      Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*) [37]
+                0.00    0.00  104557/449710      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+                             2383126             Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+-----------------------------------------------
+                             2383992             Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [5]
+                0.02    0.01  200220/200220      AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [2]
+[5]     27.8    0.02    0.01  200220+2383992 Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [5]
+                0.01    0.00 2584212/5167452     __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [8]
+                             2383992             Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [5]
+-----------------------------------------------
+                             2377454             Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+                0.02    0.00  199665/199665      AVL_tree::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [7]
+[6]     22.2    0.02    0.00  199665+2377454 Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+                0.00    0.00   70870/95592       Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+                0.00    0.00   70870/95592       Node::~Node() [47]
+                0.00    0.00   24722/24722       Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00   24722/224837      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [30]
+                0.00    0.00   24722/449710      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+                             2377454             Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+-----------------------------------------------
+                0.00    0.02  199665/199665      main [1]
+[7]     22.2    0.00    0.02  199665         AVL_tree::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [7]
+                0.02    0.00  199665/199665      Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+-----------------------------------------------
+                0.01    0.00 2583240/5167452     Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+                0.01    0.00 2584212/5167452     Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [5]
+[8]     11.1    0.01    0.00 5167452         __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [8]
+                0.00    0.00 1803208/1803208     std::char_traits<char>::compare(char const*, char const*, unsigned long) [17]
+-----------------------------------------------
+                              160322             Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.01    0.00  104557/104557      Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+[9]     11.1    0.01    0.00  104557+160322  Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.00    0.00   25611/33095       Node::rotate_left(AVL_tree*) [48]
+                0.00    0.00   23832/31083       Node::rotate_right(AVL_tree*) [49]
+                              160322             Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+-----------------------------------------------
+                0.00    0.00 3600634/3600634     bool __gnu_cxx::operator!=<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&, __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [18]
+[16]     0.0    0.00    0.00 3600634         __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::base() const [16]
+-----------------------------------------------
+                0.00    0.00 1803208/1803208     __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [8]
+[17]     0.0    0.00    0.00 1803208         std::char_traits<char>::compare(char const*, char const*, unsigned long) [17]
+-----------------------------------------------
+                0.00    0.00 1800317/1800317     tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [21]
+[18]     0.0    0.00    0.00 1800317         bool __gnu_cxx::operator!=<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&, __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [18]
+                0.00    0.00 3600634/3600634     __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::base() const [16]
+-----------------------------------------------
+                0.00    0.00 1200317/1200317     tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [21]
+[19]     0.0    0.00    0.00 1200317         __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator++() [19]
+-----------------------------------------------
+                0.00    0.00 1200317/1200317     tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [21]
+[20]     0.0    0.00    0.00 1200317         __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator*() const [20]
+-----------------------------------------------
+                0.00    0.00  600000/600000      main [1]
+[21]     0.0    0.00    0.00  600000         tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [21]
+                0.00    0.00 1800317/1800317     bool __gnu_cxx::operator!=<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&, __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [18]
+                0.00    0.00 1200317/1200317     __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator*() const [20]
+                0.00    0.00 1200317/1200317     __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator++() [19]
+-----------------------------------------------
+                0.00    0.00       1/449710      AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [3]
+                0.00    0.00   24722/449710      Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+                0.00    0.00   24722/449710      Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00   95592/449710      Node::~Node() [47]
+                0.00    0.00  104557/449710      Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+                0.00    0.00  200116/449710      main [1]
+[22]     0.0    0.00    0.00  449710         std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+-----------------------------------------------
+                0.00    0.00  425353/425353      void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [24]
+[23]     0.0    0.00    0.00  425353         bool __gnu_cxx::__is_null_pointer<char>(char*) [23]
+-----------------------------------------------
+                0.00    0.00   95958/425353      void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct_aux<char*>(char*, char*, std::__false_type) [41]
+                0.00    0.00  129280/425353      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&) [35]
+                0.00    0.00  200115/425353      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [33]
+[24]     0.0    0.00    0.00  425353         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [24]
+                0.00    0.00  425353/425353      bool __gnu_cxx::__is_null_pointer<char>(char*) [23]
+                0.00    0.00  425353/425353      std::iterator_traits<char*>::difference_type std::distance<char*>(char*, char*) [27]
+-----------------------------------------------
+                0.00    0.00  425353/425353      std::iterator_traits<char*>::difference_type std::distance<char*>(char*, char*) [27]
+[25]     0.0    0.00    0.00  425353         std::iterator_traits<char*>::difference_type std::__distance<char*>(char*, char*, std::random_access_iterator_tag) [25]
+-----------------------------------------------
+                0.00    0.00  425353/425353      std::iterator_traits<char*>::difference_type std::distance<char*>(char*, char*) [27]
+[26]     0.0    0.00    0.00  425353         std::iterator_traits<char*>::iterator_category std::__iterator_category<char*>(char* const&) [26]
+-----------------------------------------------
+                0.00    0.00  425353/425353      void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [24]
+[27]     0.0    0.00    0.00  425353         std::iterator_traits<char*>::difference_type std::distance<char*>(char*, char*) [27]
+                0.00    0.00  425353/425353      std::iterator_traits<char*>::iterator_category std::__iterator_category<char*>(char* const&) [26]
+                0.00    0.00  425353/425353      std::iterator_traits<char*>::difference_type std::__distance<char*>(char*, char*, std::random_access_iterator_tag) [25]
+-----------------------------------------------
+                0.00    0.00  200115/400230      std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [34]
+                0.00    0.00  200115/400230      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [33]
+[28]     0.0    0.00    0.00  400230         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&) [28]
+-----------------------------------------------
+                0.00    0.00  200115/400230      std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [34]
+                0.00    0.00  200115/400230      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [33]
+[29]     0.0    0.00    0.00  400230         unsigned long long& std::forward<unsigned long long&>(std::remove_reference<unsigned long long&>::type&) [29]
+-----------------------------------------------
+                0.00    0.00   24722/224837      Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+                0.00    0.00  200115/224837      main [1]
+[30]     0.0    0.00    0.00  224837         std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [30]
+                0.00    0.00  224837/224837      std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type&) [31]
+                0.00    0.00  224837/224837      unsigned long long&& std::forward<unsigned long long>(std::remove_reference<unsigned long long>::type&) [32]
+-----------------------------------------------
+                0.00    0.00  224837/224837      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [30]
+[31]     0.0    0.00    0.00  224837         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type&) [31]
+-----------------------------------------------
+                0.00    0.00  224837/224837      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [30]
+[32]     0.0    0.00    0.00  224837         unsigned long long&& std::forward<unsigned long long>(std::remove_reference<unsigned long long>::type&) [32]
+-----------------------------------------------
+                0.00    0.00  200115/200115      std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [34]
+[33]     0.0    0.00    0.00  200115         std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [33]
+                0.00    0.00  200115/425353      void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [24]
+                0.00    0.00  200115/400230      std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&) [28]
+                0.00    0.00  200115/400230      unsigned long long& std::forward<unsigned long long&>(std::remove_reference<unsigned long long&>::type&) [29]
+-----------------------------------------------
+                0.00    0.00  200115/200115      main [1]
+[34]     0.0    0.00    0.00  200115         std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [34]
+                0.00    0.00  200115/400230      unsigned long long& std::forward<unsigned long long&>(std::remove_reference<unsigned long long&>::type&) [29]
+                0.00    0.00  200115/400230      std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&) [28]
+                0.00    0.00  200115/200115      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [33]
+-----------------------------------------------
+                0.00    0.00       1/129280      AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [3]
+                0.00    0.00   24722/129280      Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00  104557/129280      Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+[35]     0.0    0.00    0.00  129280         std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&) [35]
+                0.00    0.00  129280/425353      void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [24]
+-----------------------------------------------
+                0.00    0.00   24722/129280      Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00  104558/129280      Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*) [37]
+[36]     0.0    0.00    0.00  129280         std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [36]
+-----------------------------------------------
+                0.00    0.00       1/104558      AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [3]
+                0.00    0.00  104557/104558      Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [4]
+[37]     0.0    0.00    0.00  104558         Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*) [37]
+                0.00    0.00  104558/129280      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [36]
+                0.00    0.00  104558/104558      std::remove_reference<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>::type&& std::move<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [38]
+-----------------------------------------------
+                0.00    0.00  104558/104558      Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*) [37]
+[38]     0.0    0.00    0.00  104558         std::remove_reference<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>::type&& std::move<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [38]
+-----------------------------------------------
+                0.00    0.00   95958/95958       std::__cxx11::to_string(unsigned long long) [43]
+[39]     0.0    0.00    0.00   95958         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [39]
+                0.00    0.00   95958/95958       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*, void>(char*, char*, std::allocator<char> const&) [42]
+-----------------------------------------------
+                0.00    0.00   95958/95958       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*, void>(char*, char*, std::allocator<char> const&) [42]
+[40]     0.0    0.00    0.00   95958         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*) [40]
+                0.00    0.00   95958/95958       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct_aux<char*>(char*, char*, std::__false_type) [41]
+-----------------------------------------------
+                0.00    0.00   95958/95958       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*) [40]
+[41]     0.0    0.00    0.00   95958         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct_aux<char*>(char*, char*, std::__false_type) [41]
+                0.00    0.00   95958/425353      void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag) [24]
+-----------------------------------------------
+                0.00    0.00   95958/95958       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [39]
+[42]     0.0    0.00    0.00   95958         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*, void>(char*, char*, std::allocator<char> const&) [42]
+                0.00    0.00   95958/95958       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*) [40]
+-----------------------------------------------
+                0.00    0.00   95958/95958       AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [2]
+[43]     0.0    0.00    0.00   95958         std::__cxx11::to_string(unsigned long long) [43]
+                0.00    0.00   95958/95958       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [39]
+-----------------------------------------------
+                0.00    0.00   95958/95958       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [45]
+[44]     0.0    0.00    0.00   95958         std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&& std::move<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [44]
+-----------------------------------------------
+                0.00    0.00   95958/95958       AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [2]
+[45]     0.0    0.00    0.00   95958         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [45]
+                0.00    0.00   95958/95958       std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&& std::move<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [44]
+-----------------------------------------------
+                              100335             Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+                0.00    0.00   24722/95592       Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00   70870/95592       Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+[46]     0.0    0.00    0.00   95592+100335  Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+                0.00    0.00    7484/33095       Node::rotate_left(AVL_tree*) [48]
+                0.00    0.00    7251/31083       Node::rotate_right(AVL_tree*) [49]
+                              100335             Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+-----------------------------------------------
+                0.00    0.00   24722/95592       Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00   70870/95592       Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+[47]     0.0    0.00    0.00   95592         Node::~Node() [47]
+                0.00    0.00   95592/449710      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+-----------------------------------------------
+                0.00    0.00    7484/33095       Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+                0.00    0.00   25611/33095       Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+[48]     0.0    0.00    0.00   33095         Node::rotate_left(AVL_tree*) [48]
+                0.00    0.00       1/2           AVL_tree::set_root(Node*) [51]
+-----------------------------------------------
+                0.00    0.00    7251/31083       Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+                0.00    0.00   23832/31083       Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+[49]     0.0    0.00    0.00   31083         Node::rotate_right(AVL_tree*) [49]
+                0.00    0.00       1/2           AVL_tree::set_root(Node*) [51]
+-----------------------------------------------
+                               16571             Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00   24722/24722       Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [6]
+[50]     0.0    0.00    0.00   24722+16571   Node::remove_min[abi:cxx11](AVL_tree*) [50]
+                0.00    0.00   24722/129280      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&) [35]
+                0.00    0.00   24722/95592       Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [46]
+                0.00    0.00   24722/95592       Node::~Node() [47]
+                0.00    0.00   24722/129280      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [36]
+                0.00    0.00   24722/449710      std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [22]
+                               16571             Node::remove_min[abi:cxx11](AVL_tree*) [50]
+-----------------------------------------------
+                0.00    0.00       1/2           Node::rotate_left(AVL_tree*) [48]
+                0.00    0.00       1/2           Node::rotate_right(AVL_tree*) [49]
+[51]     0.0    0.00    0.00       2         AVL_tree::set_root(Node*) [51]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [66]
+[52]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4Node6insertEP8AVL_treeRKSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEyERb [52]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [53]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN4Node6insertEP8AVL_treeRKSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEyERb [52]
+[53]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [53]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[54]     0.0    0.00    0.00       1         std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long, true>() [54]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [52] _GLOBAL__sub_I__ZN4Node6insertEP8AVL_treeRKSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEyERb [51] AVL_tree::set_root(Node*) [41] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct_aux<char*>(char*, char*, std::__false_type)
+  [53] __static_initialization_and_destruction_0(int, int) [39] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [42] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*, void>(char*, char*, std::allocator<char> const&)
+  [21] tolow(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [23] bool __gnu_cxx::__is_null_pointer<char>(char*) [43] std::__cxx11::to_string(unsigned long long)
+  [50] Node::remove_min[abi:cxx11](AVL_tree*) [19] __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator++() [25] std::iterator_traits<char*>::difference_type std::__distance<char*>(char*, char*, std::random_access_iterator_tag)
+  [48] Node::rotate_left(AVL_tree*) [18] bool __gnu_cxx::operator!=<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&, __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [26] std::iterator_traits<char*>::iterator_category std::__iterator_category<char*>(char* const&)
+  [49] Node::rotate_right(AVL_tree*) [16] __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::base() const [44] std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&& std::move<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+  [46] Node::remove_and_rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [20] __gnu_cxx::__normal_iterator<char*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::operator*() const [38] std::remove_reference<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>::type&& std::move<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&>(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&)
+   [4] Node::insert(AVL_tree*, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&, bool&) [17] std::char_traits<char>::compare(char const*, char const*, unsigned long) [31] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::type&)
+   [6] Node::remove(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [35] std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long> const&) [28] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >& std::forward<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>(std::remove_reference<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::type&)
+   [5] Node::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool&) [33] std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&, true>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&) [29] unsigned long long& std::forward<unsigned long long&>(std::remove_reference<unsigned long long&>::type&)
+   [9] Node::rebalance(AVL_tree*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [54] std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long, true>() [32] unsigned long long&& std::forward<unsigned long long>(std::remove_reference<unsigned long long>::type&)
+  [37] Node::Node(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>, Node*) [36] std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::pair(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [27] std::iterator_traits<char*>::difference_type std::distance<char*>(char*, char*)
+  [47] Node::~Node()          [22] std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::~pair() [34] std::pair<std::__decay_and_strip<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&>::__type, std::__decay_and_strip<unsigned long long&>::__type> std::make_pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, unsigned long long&)
+   [3] AVL_tree::insert(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&) [30] std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>::operator=(std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long long>&&) [8] __gnu_cxx::__enable_if<std::__is_char<char>::__value, bool>::__type std::operator==<char>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   [7] AVL_tree::remove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [40] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*) [45] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)
+   [2] AVL_tree::search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [24] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)
