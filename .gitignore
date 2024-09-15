@@ -17,3 +17,8 @@ FLP
 Приблуды
 third_party
 *.exe
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
