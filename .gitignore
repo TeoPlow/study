@@ -8,8 +8,6 @@ CMakeCache.txt
 MarkDown.ipynb
 Test*.c
 Test*.cpp
-Test*
-Tests
 main
 child
 empty_report.docx
