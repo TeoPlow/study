@@ -4,196 +4,61 @@
 #include <fstream>
 #include <algorithm>
 
-template <typename T>
-void printVector(std::vector<T>& vec) {
-    for (T ch : vec) {
-        std::cout << ch.symb;
-    }
-    std::cout << std::endl;
-    for (T ch : vec) {
-        std::cout << ch.ind;
-    }
-    std::cout << std::endl;
-    for (T ch : vec) {
-        std::cout << ch.eq;
-    }
-    std::cout << std::endl;
-}
-
 struct Symbol {
     char symb;
     int ind;
-    int eq;
-    int rank[2];
+    int eq[2];
 };
 
-bool TEST_cmp(const Symbol &a, const Symbol &b) {
-    return (a.rank[0] == b.rank[0]) ? (a.rank[1] < b.rank[1]) : (a.rank[0] < b.rank[0]);
+bool sort_key(const Symbol &a, const Symbol &b) {
+    return (a.eq[0] == b.eq[0]) ? (a.eq[1] < b.eq[1]) : (a.eq[0] < b.eq[0]);
 }
 
-std::vector<Symbol> TEST_suffixArray(const std::string &txt) {
+std::vector<Symbol> suffixArray(const std::string &txt) {
     int n = txt.size();
-    std::vector<Symbol> suffixes(n);  // Массив для хранения всех суффиксов
+    std::vector<Symbol> suff(n);
 
-    // Инициализируем суффиксы: присваиваем каждому начальный индекс и ранги
     for (int i = 0; i < n; i++) {
-        suffixes[i].ind = i;
-        suffixes[i].rank[0] = txt[i] - 'a';  // Ранг по первому символу
-        suffixes[i].rank[1] = (i + 1 < n) ? (txt[i + 1] - 'a') : -1;  // Ранг по следующему символу
+        suff[i].ind = i;
+        suff[i].eq[0] = txt[i] - 'a';
+        suff[i].eq[1] = (i + 1 < n) ? (txt[i + 1] - 'a') : -1;
     }
 
-    // Сортируем суффиксы на основе первых 2 символов
-    sort(suffixes.begin(), suffixes.end(), TEST_cmp);
+    sort(suff.begin(), suff.end(), sort_key);
 
-    // Массив для хранения индексов суффиксов
     std::vector<int> ind(n);
 
-    // Удваиваем длину префиксов (сначала 2, потом 4, потом 8 и т.д.)
     for (int k = 4; k < 2 * n; k *= 2) {
-        // Присваиваем новый ранг и сохраняем предыдущий индекс суффиксов
-        int rank = 0;
-        int prev_rank = suffixes[0].rank[0];
-        suffixes[0].rank[0] = rank;
-        ind[suffixes[0].ind] = 0;
+        int eq = 0;
+        int prev_eq = suff[0].eq[0];
+        suff[0].eq[0] = eq;
+        ind[suff[0].ind] = 0;
 
-        // Присваиваем ранги для суффиксов
         for (int i = 1; i < n; i++) {
-            if (suffixes[i].rank[0] == prev_rank && suffixes[i].rank[1] == suffixes[i - 1].rank[1]) {
-                prev_rank = suffixes[i].rank[0];
-                suffixes[i].rank[0] = rank;
+            if (suff[i].eq[0] == prev_eq && suff[i].eq[1] == suff[i - 1].eq[1]) {
+                prev_eq = suff[i].eq[0];
+                suff[i].eq[0] = eq;
             } else {
-                prev_rank = suffixes[i].rank[0];
-                suffixes[i].rank[0] = ++rank;
+                prev_eq = suff[i].eq[0];
+                suff[i].eq[0] = ++eq;
             }
-            ind[suffixes[i].ind] = i;
+            ind[suff[i].ind] = i;
         }
 
-        // Обновляем ранги для следующих k символов
         for (int i = 0; i < n; i++) {
-            int next_index = suffixes[i].ind + k / 2;
-            suffixes[i].rank[1] = (next_index < n) ? suffixes[ind[next_index]].rank[0] : -1;
+            int next_index = suff[i].ind + k / 2;
+            suff[i].eq[1] = (next_index < n) ? suff[ind[next_index]].eq[0] : -1;
         }
 
-        // Сортируем суффиксы по обновленным рангам
-        sort(suffixes.begin(), suffixes.end(), TEST_cmp);
+        sort(suff.begin(), suff.end(), sort_key);
     }
 
-    // Извлекаем индексы суффиксов для суффиксного массива
     std::vector<Symbol> suffix_array(n);
     for (int i = 0; i < n; i++) {
-        suffix_array[i].ind = suffixes[i].ind;
+        suffix_array[i].ind = suff[i].ind;
     }
 
     return suffix_array;
-}
-
-std::vector<int> buildLCPArray(const std::string &txt, const std::vector<int> &suffix_array) {
-    int n = txt.size();
-    std::vector<int> lcp(n, 0);
-    std::vector<int> inv_suffix(n, 0);  // Массив для хранения обратных индексов суффиксов
-
-    // Строим массив обратных индексов (rank array)
-    for (int i = 0; i < n; i++) {
-        inv_suffix[suffix_array[i]] = i;
-    }
-
-    int k = 0;  // Длина общего префикса
-    for (int i = 0; i < n; i++) {
-        if (inv_suffix[i] == n - 1) {
-            k = 0;
-            continue;
-        }
-
-        int j = suffix_array[inv_suffix[i] + 1];  // Следующий суффикс в суффиксном массиве
-
-        // Считаем длину общего префикса
-        while (i + k < n && j + k < n && txt[i + k] == txt[j + k]) {
-            k++;
-        }
-
-        lcp[inv_suffix[i]] = k;  // Сохраняем длину общего префикса для данного суффикса
-
-        // Уменьшаем длину общего префикса для следующего суффикса
-        if (k > 0) {
-            k--;
-        }
-    }
-
-    return lcp;
-}
-
-void countingSort(std::vector<Symbol>& array) {
-    char minValue = std::min_element(array.begin(), array.end(), 
-        [](const Symbol& a, const Symbol& b) {
-            return a.symb < b.symb;
-        })->symb;
-
-    char maxValue = std::max_element(array.begin(), array.end(), 
-        [](const Symbol& a, const Symbol& b) {
-            return a.symb < b.symb;
-        })->symb;
-    
-    int range = maxValue - minValue + 1;
-    std::vector<int> count(range, 0);
-
-    for (Symbol ch : array) {
-        count[ch.symb - minValue]++;
-    }
-
-    for (int i = 1; i < range; i++) {
-        count[i] += count[i - 1];
-    }
-
-    std::vector<Symbol> sortedArray(array.size());
-
-    for (int i = array.size() - 1; i >= 0; i--) {
-        char ch = array[i].symb;
-        int pos = count[ch - minValue] - 1;
-        sortedArray[pos].symb = ch;
-        sortedArray[pos].ind = array[i].ind;
-        count[ch - minValue]--;
-    }
-
-    array = sortedArray;
-}
-
-void suffixArray(std::string& str, std::vector<Symbol>& vec) {
-    int c = 0;
-
-    // Добавляем строку в вектор + $
-    for (char i : str) {
-        Symbol symbol;
-        symbol.symb = i;
-        symbol.ind = c;
-        vec.push_back(symbol);
-        c += 1;
-    }
-    Symbol doll;
-        doll.symb = '$';
-        doll.ind = c;
-    vec.push_back(doll);
-
-    // Сортируем вектор посимвольно
-    countingSort(vec);
-
-    // Добавляем эквивалентность
-    c = -1;
-    int j = 0;
-    Symbol old_i;
-    for (Symbol i : vec) {
-        if (i.symb != old_i.symb) {
-            c += 1;
-        }
-        old_i = i;
-        vec[j].eq = c;
-        j += 1;
-    }
-
-    // Отнимаем 1 у индекса по модулю
-    // std::vector<Symbol> vec2;
-    // for (Symbol i : vec) {
-    //     i.ind - 1
-    // }
 }
 
 std::string searchSubstr(std::string &text, std::string &pattern, std::vector<Symbol> &suff_arr) {
@@ -201,8 +66,11 @@ std::string searchSubstr(std::string &text, std::string &pattern, std::vector<Sy
     std::vector<int> results;
     int n = text.size();
     int m = pattern.size();
+
+    if (pattern == "") {
+        return answer;
+    }
     
-    // Бинарный поиск для нахождения нижней границы (первого вхождения)
     int low = 0, high = n - 1;
     while (low < high) {
         int mid = (low + high) / 2;
@@ -216,13 +84,11 @@ std::string searchSubstr(std::string &text, std::string &pattern, std::vector<Sy
         }
     }
 
-    // Проверяем, есть ли вхождение
     std::string suffix = text.substr(suff_arr[low].ind, std::min(n - suff_arr[low].ind, m));
     if (suffix != pattern) {
-        return answer;  // Подстрока не найдена
+        return answer;
     }
 
-    // Находим диапазон всех вхождений (нижняя и верхняя границы)
     int lower = low;
     high = n - 1;
     while (low < high) {
@@ -237,14 +103,15 @@ std::string searchSubstr(std::string &text, std::string &pattern, std::vector<Sy
         }
     }
 
-    // Собираем все индексы в диапазоне [lower, low]
     for (int i = low; i >= lower; i--) {
         results.push_back(suff_arr[i].ind);
     }
 
+    sort(results.begin(), results.end());
+
     for (size_t i = 0; i < results.size(); ++i) {
         answer += std::to_string(results[i] + 1);
-        if (i != results.size() - 1) {  // Если это не последний элемент, добавить запятую
+        if (i != results.size() - 1) {
             answer += ", ";
         }
     }
@@ -252,7 +119,7 @@ std::string searchSubstr(std::string &text, std::string &pattern, std::vector<Sy
 }
 
 int main() {
-    std::ifstream file("tests/1.txt");
+    std::ifstream file("tests/1000.txt");
 
     if (!file.is_open()) {
         std::cerr << "Ошибка: Не удалось открыть файл!\n";
@@ -263,17 +130,20 @@ int main() {
     std::string string;
     std::string text;
     std::vector<Symbol> vec;
+    std::string answer;
 
     bool flag = false;
     while (std::getline(file, string)) {
         if (flag == false) {
             text = string;
-            // suffixArray(string, vec);
-            vec = TEST_suffixArray(string);
+            vec = suffixArray(string);
             flag = true;
         } else {
-            std::cout << num << ": " << searchSubstr(text, string, vec) << std::endl;
-            num += 1;
+            answer = searchSubstr(text, string, vec);
+            if (answer != "") {
+                std::cout << num << ": " << searchSubstr(text, string, vec) << std::endl;
+            }
+        	num += 1;
         }
         
     }
