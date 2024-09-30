@@ -16,6 +16,7 @@ FLP
 Приблуды
 third_party
 *.o
+*.exe
 *.aux
 *.fdb_latexmk
 *.fls
