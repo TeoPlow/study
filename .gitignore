@@ -8,6 +8,7 @@ CMakeCache.txt
 MarkDown.ipynb
 Test*.c
 Test*.cpp
+Test*.py
 main
 child
 empty_report.docx
