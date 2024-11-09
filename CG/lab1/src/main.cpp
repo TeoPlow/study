@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     // Создаем прямоугольник
     sf::RectangleShape rectangle(sf::Vector2f(figureScale.x, figureScale.y));
     rectangle.setPosition((videoScale.x / 2), (videoScale.y / 2)); // Позиционирование фигуры
-    rectangle.setFillColor(sf::Color::Transparent); // Заливка
+    rectangle.setFillColor(sf::Color(255,255,255)); // Заливка
     rectangle.setOutlineThickness(20.f); // Толщина контура
     rectangle.setOutlineColor(sf::Color(255, 0, 255)); // Цвет контура (RGB)
     rectangle.setRotation(angle); // Угол поворота
