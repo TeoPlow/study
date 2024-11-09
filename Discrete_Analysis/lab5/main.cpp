@@ -139,6 +139,7 @@ std::vector<int> suffixArray(const std::string &txt) {
         // Сортируем подсчётом по эквивалентам
         eqCountingSort(text_arr, eq);
 
+        // Проверяем, когда закончить шаравар
         if (eq == (size - 1)) {
             break;
         }
