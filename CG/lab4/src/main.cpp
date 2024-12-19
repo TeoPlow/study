@@ -14,7 +14,6 @@
 sf::Vector2f videoScale(1920.f, 1080.f);
 int FrameRateLimit = 60;
 
-
 glm::vec3 cameraPos(0.0f, 0.0f, 5.0f);
 glm::vec3 cameraFront(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp(0.0f, 1.0f, 0.0f);
@@ -29,39 +28,8 @@ float sensitivity = 0.1f;
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-void processMouse(sf::Event event) {
-    if (event.type == sf::Event::MouseMoved) {
-        float xPos = static_cast<float>(event.mouseMove.x);
-        float yPos = static_cast<float>(event.mouseMove.y);
 
-        if (firstMouse) {
-            lastX = xPos;
-            lastY = yPos;
-            firstMouse = false;
-        }
-
-        float xOffset = xPos - lastX;
-        float yOffset = lastY - yPos;
-        lastX = xPos;
-        lastY = yPos;
-
-        xOffset *= sensitivity;
-        yOffset *= sensitivity;
-
-        yaw += xOffset;
-        pitch += yOffset;
-
-        if (pitch > 89.0f) pitch = 89.0f;
-        if (pitch < -89.0f) pitch = -89.0f;
-
-        glm::vec3 front;
-        front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-        front.y = sin(glm::radians(pitch));
-        front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-        cameraFront = glm::normalize(front);
-    }
-}
-GLuint loadTexture(const char* filepath) {
+GLuint TetureLoad(const char* filepath) {
     GLuint textureID;
     glGenTextures(1, &textureID);
     glBindTexture(GL_TEXTURE_2D, textureID);
@@ -87,7 +55,7 @@ GLuint loadTexture(const char* filepath) {
     return textureID;
 }
 
-std::string loadShaderSource(const std::string& filepath) {
+std::string ShaderLoad(const std::string& filepath) {
     std::ifstream file(filepath);
     if (!file) {
         std::cerr << "Ошибка чтения файла шейдера: " << filepath << std::endl;
@@ -109,14 +77,13 @@ GLuint compileShader(GLenum type, const std::string& source) {
     if (!success) {
         char infoLog[512];
         glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-        std::cerr << "Ошибка компиляции шейдера: " << infoLog << std::endl;
     }
     return shader;
 }
 
 GLuint createShaderProgram(const std::string& vertexPath, const std::string& fragmentPath) {
-    std::string vertexCode = loadShaderSource(vertexPath);
-    std::string fragmentCode = loadShaderSource(fragmentPath);
+    std::string vertexCode = ShaderLoad(vertexPath);
+    std::string fragmentCode = ShaderLoad(fragmentPath);
 
     GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexCode);
     GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentCode);
@@ -214,14 +181,14 @@ int main() {
 
     glewExperimental = GL_TRUE;
     if (glewInit() != GLEW_OK) {
-        std::cerr << "Ошибка инициализации GLEW" << std::endl;
+        std::cerr << "Ошибка инициализации" << std::endl;
         return -1;
     }
 
     glEnable(GL_DEPTH_TEST);
 
-    GLuint texture = loadTexture("paint.JPG");
-    GLuint normalMap = loadTexture("paint_norm.JPG");
+    GLuint texture = TetureLoad("paint.JPG");
+    GLuint normalMap = TetureLoad("paint_norm.JPG");
 
     if (texture == 0 || normalMap == 0) {
         std::cerr << "Ошибка загрузки текстур." << std::endl;
@@ -317,17 +284,17 @@ int main() {
 
         // Управление позицией источника света
         float lightSpeed = 2.0f * deltaTime;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))    // Перемещение вверх
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             lightPos.y += lightSpeed;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))  // Перемещение вниз
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             lightPos.y -= lightSpeed;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))  // Перемещение влево
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             lightPos.x -= lightSpeed;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) // Перемещение вправо
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             lightPos.x += lightSpeed;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::O)) // Перемещение вперёд
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
             lightPos.z -= lightSpeed;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) // Перемещение назад
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
             lightPos.z += lightSpeed;
         
         glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
